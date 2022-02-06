@@ -1,6 +1,6 @@
+var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
 
-function sayHi() {
-    document.getElementById('text').innerHTML = 'Hello World';
-
-}
-sayHi();
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
