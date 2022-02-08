@@ -2,14 +2,20 @@
 var myModal = document.getElementById("myModal");
 var myInput = document.getElementById("myInput");
 
-// myModal.addEventListener("shown.bs.modal", function () {
-//   myInput.focus();
-// });
+//myModal.addEventListener("shown.bs.modal", function () {
+//  myInput.focus();
+//});
 
 const cards = document.getElementById("cards");
 const items = document.getElementById("cart-item");
+const cartTotal = document.getElementById("cart-total");
 const templateCard = document.getElementById("template-card").content;
-const templateCartItems = document.getElementById("template-cart-items").content;
+const templateCartItems = document.getElementById(
+  "template-cart-items"
+).content;
+const templateCartTotal = document.getElementById(
+  "template-cart-total"
+).content;
 const fragment = document.createDocumentFragment();
 let cart = {};
 
@@ -17,8 +23,13 @@ let cart = {};
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
 });
+//add product to cart on click
 cards.addEventListener("click", (e) => {
   addToCart(e);
+});
+
+items.addEventListener("click", (e) => {
+btnAction(e);
 });
 //async fetch the data from the api
 const fetchData = async () => {
@@ -32,13 +43,12 @@ const fetchData = async () => {
   }
 };
 
-let dollarSign = "$";
 //function that maps the product cards
 const mapCards = (data) => {
   console.log(data);
   data.forEach((product) => {
     templateCard.querySelector("h5").textContent = product.name;
-    templateCard.querySelector("h2").textContent = dollarSign + product.price;
+    templateCard.querySelector("h2").textContent = product.price;
     templateCard.querySelector("img").setAttribute("src", product.url_image);
     templateCard.querySelector("button.btn-success").dataset.id = product.id;
     templateCard.querySelector("i.fa-shopping-cart").dataset.id = product.id;
@@ -85,13 +95,49 @@ const showCartItems = () => {
   items.innerHTML = "";
   Object.values(cart).forEach((product) => {
     templateCartItems.querySelectorAll("h6")[0].textContent = product.name;
-    templateCartItems.querySelectorAll("span").textContent = product.quantity * product.price;
-    templateCartItems.querySelector('.fa-minus').dataset.id = product.id;
-    templateCartItems.querySelector('.fa-plus').dataset.id = product.id; 
-    templateCartItems.querySelector('input').value = product.quantity;
-    templateCard.querySelector("img").setAttribute("src", product.url_image)
+    templateCartItems.querySelectorAll("h6")[1].textContent =
+      product.quantity * product.price;
+    templateCartItems.querySelector("input").value = product.quantity;
+    templateCartItems.querySelector(".fa-minus").dataset.id = product.id;
+    templateCartItems.querySelector(".fa-plus").dataset.id = product.id;
+    templateCard.querySelector("img").setAttribute("src", product.url_image);
     const clone = templateCartItems.cloneNode(true);
     fragment.appendChild(clone);
   });
   items.appendChild(fragment);
+
+  showCartTotal();
 };
+
+const showCartTotal = () => {
+  //set my total to an empty html so when i clone it below i can add the total and it wont repeat itself
+  cartTotal.innerHTML = "";
+  if (Object.keys(cart).length === 0) {
+    cartTotal.innerHTML = "";
+    return;
+  }
+  //here i use the reduce function to get the total items in the cart
+  const nQuantity = Object.values(cart).reduce(
+    (acc, { quantity }) => acc + quantity,
+    0
+  );
+  //here i use the reduce function to get the total price in the cart
+  const nPrice = Object.values(cart).reduce((acc, { quantity, price }) => acc + quantity * price, 0);
+  templateCartTotal.querySelectorAll("h5")[4].textContent = nQuantity;
+  templateCartTotal.querySelectorAll("h5")[2].textContent = nPrice;
+
+  const clone = templateCartTotal.cloneNode(true);
+  fragment.appendChild(clone)
+  cartTotal.appendChild(fragment);
+
+  //function that set my cart to 0 and update the cart items
+  const btnEmpty = document.getElementById("empty-cart");
+  btnEmpty.addEventListener("click", () => {
+    cart = {};
+    showCartItems();
+  });
+};
+
+const btnAction = (e) => {
+  console.log(e.target);
+}

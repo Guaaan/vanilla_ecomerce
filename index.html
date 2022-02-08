@@ -97,7 +97,7 @@
 
           <!-- Modal -->
           <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="cartModalLabel">
@@ -123,49 +123,49 @@
                                       <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
                                       <h6 class="mb-0 text-muted"></h6>
                                     </div>
+                                    <div class="row mb-4 d-flex justify-content-between align-items-center"
+                                      id="cart--header">
+                                      <div class="col-md-1 col-lg-1 col-xl-1">
+                                        <h4>id</h4>
+                                      </div>
+                                      <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <h4 class="text-black mb-0">producto</h4>
+                                      </div>
+                                      <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <h4 class="text-black mb-0">precio</h4>
+                                      </div>
+                                      <div class="col-md-2 col-lg-2 col-xl-2">
+                                        <h4 class="text-black mb-0">descuento%</h4>
+                                      </div>
+                                      <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+                                        <h4> cantidad
+                                        </h4>
+                                      </div>
+                                      <div class="col-md-3 col-lg-2 col-xl-2">
+                                        <h4 class="">total</h4>
+                                      </div>
+                                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                        <h4 href="#!" class="text-muted">Borrar
+                                        </h4>
+                                      </div>
+                                    </div>
                                     <hr class="my-4">
                                     <div id="cart-item">
-
-                                      <div class="row mb-4 d-flex justify-content-between align-items-center"
-                                        id="cart-item">
-                                        <div class="col-md-2 col-lg-2 col-xl-2">
-                                          <img
-                                            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-shopping-carts/img5.webp"
-                                            class="img-fluid rounded-3" alt="Cotton T-shirt">
-                                        </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-3">
-                                          <h6 class="text-black mb-0">Item Name</h6>
-                                        </div>
-                                        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                          <button class="btn btn-link px-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                            <i class="fas fa-minus"></i>
-                                          </button>
-
-                                          <input id="form1" min="0" name="quantity" value="1" type="number"
-                                            class="form-control form-control-sm text-center" />
-
-                                          <button class="btn btn-link px-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                            <i class="fas fa-plus"></i>
-                                          </button>
-                                        </div>
-                                        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                          <h6 class="mb-0">€ 44.00</h6>
-                                        </div>
-                                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                          <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
-                                        </div>
-                                      </div>
+                                      <h1>debes agregar un articulo</h1>
                                       <hr class="my-4">
                                     </div>
-
-
-                                    <div class="pt-5">
-                                      <h6 class="mb-0"><a href="#!" class="text-body"><i
-                                            class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                                    
+                                    <div id="cart-total">
+                                      
                                     </div>
                                   </div>
+
+                                </div>
+                                <div class="p-5">
+
+
+
+
                                 </div>
 
                               </div>
@@ -203,6 +203,8 @@
       </div>
     </div>
   </main>
+
+
   <!-- pagination -->
   <nav aria-label="...">
     <ul class="pagination pagination-circle">
@@ -220,8 +222,9 @@
     </ul>
   </nav>
   <!-- end of pagination -->
+
+
   <!-- Footer -->
-  <!-- <template id="template-footer"> -->
   <footer class="text-center text-lg-start bg-light text-muted">
 
     <section class="mb-4">
@@ -350,7 +353,7 @@
             texto de la card de prueba para ver si funciona el template
           </p>
           <div class="d-flex gap-3 bd-highlight justify-content-start">
-            <button href="#" class="btn btn-success">
+            <button href="" class="btn btn-success">
               Comprar <i class="fa fa-shopping-cart"></i>
             </button>
             <div class="flex-grow-1 bd-highlight">
@@ -365,40 +368,79 @@
   <!-- end card nro1 -->
   <template id="template-cart-items">
     <div id="cart-item">
+      <div id="cart-item">
 
-      <div class="row mb-4 d-flex justify-content-between align-items-center" id="cart-item">
-        <div class="col-md-2 col-lg-2 col-xl-2">
-          <img src=""
-            class="img-fluid rounded-3" alt="Cotton T-shirt">
-        </div>
-        <div class="col-md-3 col-lg-3 col-xl-3">
-          <h6 class="text-black mb-0">Item Name</h6>
-        </div>
-        <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-          <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-            <i class="fas fa-minus"></i>
-          </button>
+        <div class="row mb-4 d-flex justify-content-between align-items-center" id="cart-item">
+          <div class="col-md-1 col-lg-1 col-xl-1">
+            <img src="" class="img-fluid rounded-3" alt="Cotton T-shirt">
+          </div>
+          <div class="col-md-2 col-lg-2 col-xl-2">
+            <h6 class="text-black mb-0">producto</h6>
+          </div>
+          <div class="col-md-1 col-lg-1 col-xl-1">
+            <h6 class="text-black mb-0">2990</h6>
+          </div>
+          <div class="col-md-1 col-lg-1 col-xl-1">
+            <h6 class="text-black mb-0">descuento%</h6>
+          </div>
+          <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+            <button class="btn btn-link px-2" type='button'>
+              <i class="fas fa-minus" aria-hidden="true"></i>
+            </button>
 
-          <input id="form1" min="0" name="quantity" value="1" type="number"
-            class="form-control form-control-sm text-center" />
+            <input id="form1" min="0" name="quantity" value="1" type="number"
+              class="form-control form-control-sm text-center">
 
-          <button class="btn btn-link px-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-            <i class="fas fa-plus"></i>
-          </button>
+            <button class="btn btn-link px-2" type='button'>
+              <i class="fas fa-plus" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+            <h6 class="mb-0">5980</h6>
+          </div>
+          <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+            <a href="#!" class="text-muted"><i class="fas fa-times" aria-hidden="true"></i></a>
+          </div>
         </div>
-        <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-          <h6 class="mb-0"><span> 44.00</span></h6>
-        </div>
-        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-          <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
-        </div>
+        <hr class="my-4">
       </div>
-      <hr class="my-4">
     </div>
   </template>
-  <!-- first item -->
+  <!-- total -->
+  <template id="template-cart-total">
+    <div id="cart-total">
+      <div class="row mb-4 d-flex justify-content-between align-items-center" id="cart-total">
+        <div class="col-md-1 col-lg-1 col-xl-1">
+          <h5 class="text-black mb-0">Total</h5>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2">
+          <h5 class="text-black mb-0"></h5>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2">
+          <h5 class="text-black mb-0">total pr</h5>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2">
+          <h5 class="text-black mb-0">total %</h5>
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+          <h5 class="text-black mb-0">total cant</h5>
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2">
+          <h5 class="text-black mb-0">total</h5>
+        </div>
 
-  <!-- end first item -->
+        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+          <button class="btn btn-danger" id="empty-cart">
+            Vaciar <i class="fa fa-trash"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </template>
+
+
+  <!-- end total -->
 
   <script src="scripts/scripts.js"></script>
   <script src="https://kit.fontawesome.com/60dd4aba7b.js" crossorigin="anonymous"></script>

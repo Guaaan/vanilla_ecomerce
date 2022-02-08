@@ -17,7 +17,7 @@
   },
   {
     "id": 3,
-    "name": "producto",
+    "name": "producto3",
     "url_image": "https://picsum.photos/id/2/600",
     "price": 2990,
     "discount": 10,
@@ -25,7 +25,7 @@
   },
   {
     "id": 4,
-    "name": "producto",
+    "name": "producto4",
     "url_image": "https://picsum.photos/id/3/600",
     "price": 2990,
     "discount": 10,
@@ -33,7 +33,7 @@
   },
   {
     "id": 5,
-    "name": "producto",
+    "name": "producto5",
     "url_image": "https://picsum.photos/id/4/600",
     "price": 2990,
     "discount": 10,
