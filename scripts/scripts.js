@@ -22,6 +22,11 @@ let cart = {};
 //call the fetch api data
 document.addEventListener("DOMContentLoaded", () => {
   fetchData();
+  //load the item from the local storage
+  if (localStorage.getItem("cart")) {
+    cart = JSON.parse(localStorage.getItem("cart"));
+    showCartItems();
+  } 
 });
 //add product to cart on click
 cards.addEventListener("click", (e) => {
@@ -107,6 +112,8 @@ const showCartItems = () => {
   items.appendChild(fragment);
 
   showCartTotal();
+  //save the cart in the local storage
+  localStorage.setItem("cart", JSON.stringify(cart));
 };
 
 const showCartTotal = () => {
@@ -139,5 +146,29 @@ const showCartTotal = () => {
 };
 
 const btnAction = (e) => {
-  console.log(e.target);
+  
+  //sum an item
+  if (e.target.classList.contains("fa-plus")) {
+    //console.log(cart[e.target.dataset.id]);
+
+    const product = cart[e.target.dataset.id];
+    product.quantity++;
+    //save the new quantity in a copy of product
+    cart[e.target.dataset.id] = { ...product };
+    showCartItems();
+  }
+  //substract an item 
+  if (e.target.classList.contains('fa-minus')){
+    //console.log(cart[e.target.dataset.id]);
+
+    const product = cart[e.target.dataset.id];
+    product.quantity--;
+    //delete the item if quantity is 0
+    if (product.quantity === 0) {
+      delete cart[e.target.dataset.id];
+    }
+    //save the new quantity in a copy of product
+    showCartItems();
+  }
+  e.stopPropagation();
 }
