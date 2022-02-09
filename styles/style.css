@@ -44,9 +44,9 @@ footer {
   color: #ffc400;
 }
 
-.strike-text {
+.underline-text {
   color: red;
-  text-decoration: line-through
+  font-weight: 800;
 }
 
 .modal-dialog {
