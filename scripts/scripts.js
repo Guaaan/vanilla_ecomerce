@@ -57,6 +57,7 @@ const mapCards = (data) => {
     templateCard.querySelector("h2").textContent = product.price;
     templateCard.querySelector("img").setAttribute("src", product.url_image);
     templateCard.querySelector("h3.percent").textContent = product.discount;
+    templateCard.querySelector("p.card-text").textContent = product.category;
     //falta la categoría
     templateCard.querySelector("button.btn-success").dataset.id = product.id;
     templateCard.querySelector("i.fa-shopping-cart").dataset.id = product.id;
@@ -86,8 +87,12 @@ const setCart = (object) => {
   const product = {
     id: object.querySelector("button.btn-success").dataset.id,
     name: object.querySelector("h5").textContent,
+    url_image: object.querySelector("img").src,
     price: object.querySelector("h2").textContent,
+    discount: object.querySelector("h3.percent").textContent,
+    //category: object.querySelector("h6.category").textContent,
     quantity: 1,
+
   };
 
   if (cart.hasOwnProperty(product.id)) {
