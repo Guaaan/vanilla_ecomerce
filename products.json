@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "producto",
-    "url_image": "https://picsum.photos/id/1/600",
+    "url_image": "https://picsum.photos/id/5/600",
     "price": 2990,
     "discount": 10,
     "category": 1
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "name": "producto2",
-    "url_image": "https://picsum.photos/id/0/600",
+    "url_image": "https://picsum.photos/id/6/600",
     "price": 3990,
     "discount": 15,
     "category": 2
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "name": "producto3",
-    "url_image": "https://picsum.photos/id/2/600",
+    "url_image": "https://picsum.photos/id/7/600",
     "price": 2990,
     "discount": 10,
     "category": 1
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "name": "producto4",
-    "url_image": "https://picsum.photos/id/3/600",
+    "url_image": "https://picsum.photos/id/7/600",
     "price": 2990,
     "discount": 10,
     "category": 1
