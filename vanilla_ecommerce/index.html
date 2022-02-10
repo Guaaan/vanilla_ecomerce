@@ -29,25 +29,7 @@
       <a class="navbar-brand" id="arvo-title" href="#">JP_Store</a>
       <div class="btn-group btn-group-toggle" data-toggle="buttons">
         <!-- search bar and Cart -->
-        <div class="input-group mb-3 p-2">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <input class="form-control align-self-center secondary" id="nav-item" type="search" placeholder="Buscar"
-            aria-label="Search" />
-          <button class="btn btn-outline-success" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-          <!-- cart icon -->
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#cartModal">
-            <i class="fas fa-shopping-cart"></i>
-
-          </button>
-        </div>
-
+        
       </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -364,13 +346,14 @@
 
   </template>
   <!-- end card nro1 -->
+  <!-- cart items -->
   <template id="template-cart-items">
     <div id="cart-item">
       <div id="cart-item">
 
         <div class="row mb-4 d-flex justify-content-between align-items-center" id="cart-item">
           <div class="col-md-1 col-lg-1 col-xl-1">
-            <img src="" class="img-fluid rounded-3" alt="Cotton T-shirt">
+            <img src="https://picsum.photos/200" class="img-fluid rounded-3" alt="...">
           </div>
           <div class="col-md-2 col-lg-2 col-xl-2">
             <h6 class="text-black mb-0">producto</h6>
@@ -404,6 +387,7 @@
       </div>
     </div>
   </template>
+  <!-- end cart items -->
   <!-- total -->
   <template id="template-cart-total">
     <div id="cart-total">

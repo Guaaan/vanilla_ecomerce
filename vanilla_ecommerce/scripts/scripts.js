@@ -1,3 +1,10 @@
+//bootstrap modal function
+var myModal = document.getElementById("myModal");
+var myInput = document.getElementById("myInput");
+
+//myModal.addEventListener("shown.bs.modal", function () {
+//  myInput.focus();
+//});
 
 const cards = document.getElementById("cards");
 const items = document.getElementById("cart-item");
@@ -29,7 +36,6 @@ cards.addEventListener("click", (e) => {
 items.addEventListener("click", (e) => {
 btnAction(e);
 });
-
 //async fetch the data from the api
 const fetchData = async () => {
   try {
@@ -42,13 +48,6 @@ const fetchData = async () => {
   }
 };
 
-//bootstrap modal function
-var myModal = document.getElementById("myModal");
-var myInput = document.getElementById("myInput");
-
-//myModal.addEventListener("shown.bs.modal", function () {
-//  myInput.focus();
-//});
 //function that maps the product cards
 const mapCards = (data) => {
   console.log(data);
@@ -56,12 +55,8 @@ const mapCards = (data) => {
     templateCard.querySelector("h5").textContent = product.name;
     templateCard.querySelector("h2").textContent = product.price;
     templateCard.querySelector("img").setAttribute("src", product.url_image);
-    templateCard.querySelector("h3.percent").textContent = product.discount;
-    templateCard.querySelector("p.card-text").textContent = product.category;
-    //falta la categoría
     templateCard.querySelector("button.btn-success").dataset.id = product.id;
     templateCard.querySelector("i.fa-shopping-cart").dataset.id = product.id;
-
 
     const clone = templateCard.cloneNode(true);
     fragment.appendChild(clone);
@@ -77,7 +72,7 @@ const addToCart = (e) => {
     e.target.classList.contains("btn-success") ||
     e.target.classList.contains("fa-shopping-cart")
   ) {
-    setCart(e.target.parentElement.parentElement);
+    setCart(e.target.parentElement.parentElement.parentElement);
   }
   e.stopPropagation();
 };
@@ -89,10 +84,7 @@ const setCart = (object) => {
     name: object.querySelector("h5").textContent,
     url_image: object.querySelector("img").src,
     price: object.querySelector("h2").textContent,
-    discount: object.querySelector("h3.percent").textContent,
-    //category: object.querySelector("h6.category").textContent,
     quantity: 1,
-
   };
 
   if (cart.hasOwnProperty(product.id)) {
@@ -115,6 +107,7 @@ const showCartItems = () => {
     templateCartItems.querySelector(".fa-minus").dataset.id = product.id;
     templateCartItems.querySelector(".fa-plus").dataset.id = product.id;
     templateCard.querySelector("img").setAttribute("src", product.url_image);
+
     const clone = templateCartItems.cloneNode(true);
     fragment.appendChild(clone);
   });
@@ -139,7 +132,6 @@ const showCartTotal = () => {
   );
   //here i use the reduce function to get the total price in the cart
   const nPrice = Object.values(cart).reduce((acc, { quantity, price }) => acc + quantity * price, 0);
-
   templateCartTotal.querySelectorAll("h5")[4].textContent = nQuantity;
   templateCartTotal.querySelectorAll("h5")[2].textContent = nPrice;
 
@@ -179,11 +171,6 @@ const btnAction = (e) => {
     }
     //save the new quantity in a copy of product
     showCartItems();
-  }
-  if (e.target.classList.contains("text-muted")) {
-    delete cart[e.target.dataset.id];
-    showCartItems();
-
   }
   e.stopPropagation();
 }
