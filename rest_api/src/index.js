@@ -10,7 +10,8 @@ app.use(express.json());
 //routes
 app.use(require("./routes/products"));
 
+
 //starting the server
 app.listen(app.get('port'), () => {
-  console.log("Server is running on port", app.get('port'));
+  console.log(`Server on port ${app.get('port')}`);
 });
