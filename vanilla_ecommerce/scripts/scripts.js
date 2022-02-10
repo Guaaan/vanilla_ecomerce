@@ -57,6 +57,8 @@ const mapCards = (data) => {
     templateCard.querySelector("img").setAttribute("src", product.url_image);
     templateCard.querySelector("button.btn-success").dataset.id = product.id;
     templateCard.querySelector("i.fa-shopping-cart").dataset.id = product.id;
+    templateCard.querySelector("p.card-text").textContent = product.category;
+    templateCard.querySelector("h3.percent").textContent = product.discount;
 
     const clone = templateCard.cloneNode(true);
     fragment.appendChild(clone);
@@ -84,6 +86,8 @@ const setCart = (object) => {
     name: object.querySelector("h5").textContent,
     url_image: object.querySelector("img").src,
     price: object.querySelector("h2").textContent,
+    discount: object.querySelector("h3.percent").textContent,
+    category: object.querySelector("p.card-text").textContent,
     quantity: 1,
   };
 
@@ -101,12 +105,11 @@ const showCartItems = () => {
   items.innerHTML = "";
   Object.values(cart).forEach((product) => {
     templateCartItems.querySelectorAll("h6")[0].textContent = product.name;
-    templateCartItems.querySelectorAll("h6")[1].textContent =
-      product.quantity * product.price;
+    templateCartItems.querySelectorAll("h6")[1].textContent = product.quantity * product.price;
     templateCartItems.querySelector("input").value = product.quantity;
     templateCartItems.querySelector(".fa-minus").dataset.id = product.id;
     templateCartItems.querySelector(".fa-plus").dataset.id = product.id;
-    templateCard.querySelector("img").setAttribute("src", product.url_image);
+    templateCartItems.querySelector("img").setAttribute("src", product.url_image);
 
     const clone = templateCartItems.cloneNode(true);
     fragment.appendChild(clone);
