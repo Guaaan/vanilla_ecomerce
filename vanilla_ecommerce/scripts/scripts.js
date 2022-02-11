@@ -64,15 +64,15 @@ const mapCards = (data) => {
   console.log(data);
   data.forEach((product) => {
     templateCard.querySelector("h5").textContent = product.name;
-    templateCard.querySelector("h2").textContent = "$" + product.price;
+    templateCard.querySelector("h2").textContent = product.price;
     templateCard.querySelector("img").setAttribute("src", product.url_image);
     templateCard.querySelector("button.btn-success").dataset.id = product.id;
     templateCard.querySelector("i.fa-shopping-cart").dataset.id = product.id;
     templateCard.querySelector("p.card-text").textContent = product.category;
     if (product.discount > 0) {
-      templateCard.querySelector("h3.percent").textContent = "-" + product.discount + "%";
+      templateCard.querySelector("h3.percent").textContent =  product.discount;
     } if (product.discount == 0) {
-      templateCard.querySelector("h3.percent").textContent = "";
+      templateCard.querySelector("h3.percent").textContent = 0;
       }
     
     const clone = templateCard.cloneNode(true);
@@ -95,7 +95,7 @@ const addToCart = (e) => {
 };
 
 const setCart = (object) => {
-  //console.log(object);
+  console.log(object);
   const product = {
     id: object.querySelector("button.btn-success").dataset.id,
     name: object.querySelector("h5").textContent,
@@ -120,12 +120,9 @@ const showCartItems = () => {
   items.innerHTML = "";
   Object.values(cart).forEach((product) => {
     templateCartItems.querySelectorAll("h6")[0].textContent = product.name;
-    templateCartItems.querySelectorAll("h6")[1].textContent =
-      "$" + product.price;
-    templateCartItems.querySelectorAll("h6")[2].textContent =
-      "$" + product.quantity * product.price * (product.discount / 100);
-    templateCartItems.querySelectorAll("h6")[3].textContent =
-      "$" + product.quantity * product.price;
+    templateCartItems.querySelectorAll("h6")[1].textContent = product.price;
+    templateCartItems.querySelectorAll("h6")[2].textContent = product.quantity * product.price * (product.discount / 100);
+    templateCartItems.querySelectorAll("h6")[3].textContent = product.quantity * product.price;
     templateCartItems.querySelector("input").value = product.quantity;
     templateCartItems.querySelector(".fa-minus").dataset.id = product.id;
     templateCartItems.querySelector(".fa-plus").dataset.id = product.id;
@@ -165,10 +162,12 @@ const showCartTotal = () => {
     acc + quantity * price * (discount / 100),
     0
   );
+  const nTotal = nPrice - nTotalDiscount;
+
   templateCartTotal.querySelectorAll("h5")[4].textContent = nQuantity;
   templateCartTotal.querySelectorAll("h5")[2].textContent = nPrice;
   templateCartTotal.querySelectorAll("h5")[3].textContent = nTotalDiscount;
-
+  templateCartTotal.querySelectorAll("h5")[5].textContent = nTotal;
   const clone = templateCartTotal.cloneNode(true);
   fragment.appendChild(clone);
   cartTotal.appendChild(fragment);
