@@ -1,5 +1,7 @@
 const mysql = require('mysql');
+// import of the module mysql
 
+// config my sql connection
 const mysqlConnection = mysql.createConnection({
     host: 'mdb-test.c6vunyturrl6.us-west-1.rds.amazonaws.com',
     user: 'bsale_test',
@@ -7,6 +9,7 @@ const mysqlConnection = mysql.createConnection({
     database: 'bsale_test'
 })
 
+// checks my connection
 mysqlConnection.connect(function (err) {
     if (err) {
         console.log(err);

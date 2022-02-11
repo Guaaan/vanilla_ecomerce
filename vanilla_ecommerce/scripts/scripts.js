@@ -39,8 +39,19 @@ items.addEventListener("click", (e) => {
 //async fetch the data from the api
 const fetchData = async () => {
   try {
-    //aqui debe ir la url de la api
-    const res = await fetch("products.json");
+    
+
+    //this is how i would have fetched the api data
+    /*const response = await fetch(
+      "https://backend-vanilla-ecommerce.herokuapp.com/"
+    );
+    //get the data from the api
+    const data = await response.json();
+    //map the data
+    mapCards(data);*/
+
+
+    const res = await fetch("../products.json");
     const data = await res.json();
     mapCards(data);
   } catch (error) {
