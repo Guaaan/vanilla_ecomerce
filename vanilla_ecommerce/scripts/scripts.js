@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("cart")) {
     cart = JSON.parse(localStorage.getItem("cart"));
     showCartItems();
-  } 
+  }
 });
 //add product to cart on click
 cards.addEventListener("click", (e) => {
@@ -34,7 +34,7 @@ cards.addEventListener("click", (e) => {
 });
 
 items.addEventListener("click", (e) => {
-btnAction(e);
+  btnAction(e);
 });
 //async fetch the data from the api
 const fetchData = async () => {
@@ -53,13 +53,17 @@ const mapCards = (data) => {
   console.log(data);
   data.forEach((product) => {
     templateCard.querySelector("h5").textContent = product.name;
-    templateCard.querySelector("h2").textContent = product.price;
+    templateCard.querySelector("h2").textContent = "$" + product.price;
     templateCard.querySelector("img").setAttribute("src", product.url_image);
     templateCard.querySelector("button.btn-success").dataset.id = product.id;
     templateCard.querySelector("i.fa-shopping-cart").dataset.id = product.id;
     templateCard.querySelector("p.card-text").textContent = product.category;
-    templateCard.querySelector("h3.percent").textContent = product.discount;
-
+    if (product.discount > 0) {
+      templateCard.querySelector("h3.percent").textContent = "-" + product.discount + "%";
+    } if (product.discount == 0) {
+      templateCard.querySelector("h3.percent").textContent = "";
+      }
+    
     const clone = templateCard.cloneNode(true);
     fragment.appendChild(clone);
   });
@@ -101,15 +105,22 @@ const setCart = (object) => {
 };
 //show the cart items in the cart modal
 const showCartItems = () => {
-  console.log(cart);
+  //console.log(cart);
   items.innerHTML = "";
   Object.values(cart).forEach((product) => {
     templateCartItems.querySelectorAll("h6")[0].textContent = product.name;
-    templateCartItems.querySelectorAll("h6")[1].textContent = product.quantity * product.price;
+    templateCartItems.querySelectorAll("h6")[1].textContent =
+      "$" + product.price;
+    templateCartItems.querySelectorAll("h6")[2].textContent =
+      "$" + product.quantity * product.price * (product.discount / 100);
+    templateCartItems.querySelectorAll("h6")[3].textContent =
+      "$" + product.quantity * product.price;
     templateCartItems.querySelector("input").value = product.quantity;
     templateCartItems.querySelector(".fa-minus").dataset.id = product.id;
     templateCartItems.querySelector(".fa-plus").dataset.id = product.id;
-    templateCartItems.querySelector("img").setAttribute("src", product.url_image);
+    templateCartItems
+      .querySelector("img")
+      .setAttribute("src", product.url_image);
 
     const clone = templateCartItems.cloneNode(true);
     fragment.appendChild(clone);
@@ -134,12 +145,21 @@ const showCartTotal = () => {
     0
   );
   //here i use the reduce function to get the total price in the cart
-  const nPrice = Object.values(cart).reduce((acc, { quantity, price }) => acc + quantity * price, 0);
+  const nPrice = Object.values(cart).reduce(
+    (acc, { quantity, price }) => acc + quantity * price,
+    0
+  );
+  const nTotalDiscount = Object.values(cart).reduce(
+    (acc, { quantity, price, discount }) => 
+    acc + quantity * price * (discount / 100),
+    0
+  );
   templateCartTotal.querySelectorAll("h5")[4].textContent = nQuantity;
   templateCartTotal.querySelectorAll("h5")[2].textContent = nPrice;
+  templateCartTotal.querySelectorAll("h5")[3].textContent = nTotalDiscount;
 
   const clone = templateCartTotal.cloneNode(true);
-  fragment.appendChild(clone)
+  fragment.appendChild(clone);
   cartTotal.appendChild(fragment);
 
   //function that set my cart to 0 and update the cart items
@@ -151,7 +171,6 @@ const showCartTotal = () => {
 };
 
 const btnAction = (e) => {
-  
   //sum an item
   if (e.target.classList.contains("fa-plus")) {
     //console.log(cart[e.target.dataset.id]);
@@ -162,8 +181,8 @@ const btnAction = (e) => {
     cart[e.target.dataset.id] = { ...product };
     showCartItems();
   }
-  //substract an item 
-  if (e.target.classList.contains('fa-minus')){
+  //substract an item
+  if (e.target.classList.contains("fa-minus")) {
     //console.log(cart[e.target.dataset.id]);
 
     const product = cart[e.target.dataset.id];
@@ -176,4 +195,4 @@ const btnAction = (e) => {
     showCartItems();
   }
   e.stopPropagation();
-}
+};

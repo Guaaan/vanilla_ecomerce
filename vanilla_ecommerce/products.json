@@ -1,12 +1,4 @@
-[
-  {
-    "id": 1,
-    "name": "producto",
-    "url_image": "https://picsum.photos/id/5/600",
-    "price": 2990,
-    "discount": 10,
-    "category": 1
-  },
+[ 
   {
     "id": 5,
     "name": "ENERGETICA MR BIG",

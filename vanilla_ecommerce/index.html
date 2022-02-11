@@ -117,7 +117,7 @@
                                         <h4 class="text-black mb-0">precio</h4>
                                       </div>
                                       <div class="col-md-2 col-lg-2 col-xl-2">
-                                        <h4 class="text-black mb-0">descuento%</h4>
+                                        <h4 class="text-black mb-0">%</h4>
                                       </div>
                                       <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
                                         <h4> cantidad
@@ -126,10 +126,7 @@
                                       <div class="col-md-3 col-lg-2 col-xl-2">
                                         <h4 class="">total</h4>
                                       </div>
-                                      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                        <h4 href="#!" class="text-muted">Borrar
-                                        </h4>
-                                      </div>
+                                      
                                     </div>
                                     <hr class="my-4">
                                     <div id="cart-item">
@@ -323,11 +320,11 @@
 
     <div class="row-col-md-5">
       <div class="card">
-        <img src="" class="card-img-top" alt="..." />
+        <img src="" class="card-img-top" alt="..."/>
         <div class="card-body">
           <div class="d-flex bd-highlight">
             <h5 class="card-title p-2 flex-fill">Producto</h5>
-            <h3 class="card-title p-2 justify-end underline-text"><h3 class="percent">20</h3>%</h3>
+            <h3 class="card-title p-2 justify-end underline-text sign"><h3 class="percent">20</h3></h3>
           </div>
           <p class="card-text">
             texto de la card de prueba para ver si funciona el template
@@ -379,9 +376,6 @@
           <div class="col-md-3 col-lg-2 col-xl-2">
             <h6 class="mb-0">5980</h6>
           </div>
-          <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-            <a href="#" class="text-muted"><i class="fas fa-times" aria-hidden="true"></i></a>
-          </div>
         </div>
         <hr class="my-4">
       </div>
@@ -390,34 +384,31 @@
   <!-- end cart items -->
   <!-- total -->
   <template id="template-cart-total">
-    <div id="cart-total">
-      <div class="row mb-4 d-flex justify-content-between align-items-center" id="cart-total">
-        <div class="col-md-1 col-lg-1 col-xl-1">
-          <h5 class="text-black mb-0">Total</h5>
-        </div>
-        <div class="col-md-2 col-lg-2 col-xl-2">
-          <h5 class="text-black mb-0"></h5>
-        </div>
-        <div class="col-md-2 col-lg-2 col-xl-2">
-          <h5 class="text-black mb-0">total pr</h5>
-        </div>
-        <div class="col-md-2 col-lg-2 col-xl-2">
-          <h5 class="text-black mb-0">total %</h5>
-        </div>
-        <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
-          <h5 class="text-black mb-0">total cant</h5>
-        </div>
-        <div class="col-md-3 col-lg-2 col-xl-2">
-          <h5 class="text-black mb-0">total</h5>
-        </div>
-
-        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-          <button class="btn btn-danger" id="empty-cart">
-            Vaciar <i class="fa fa-trash"></i>
-          </button>
-        </div>
+    <div class="row mb-4 d-flex justify-content-between align-items-center" id="cart-total">
+      <div class="col-md-2 col-lg-2 col-xl-2">
+        <h5 class="text-black mb-0">Totales:</h5>
+      </div>
+      <div class="col-md-1 col-lg-1 col-xl-1">
+        <h5 class="text-black mb-0"></h5>
+      </div>
+      <div class="col-md-2 col-lg-2 col-xl-2">
+        <h5 class="text-black mb-0 text-end">22540</h5>
+      </div>
+      <div class="col-md-2 col-lg-2 col-xl-2">
+        <h5 class="text-black mb-0 text-center">total %</h5>
+      </div>
+      <div class="col-md-2 col-lg-2 col-xl-2 d-flex">
+        <h5 class="text-black mb-0">6</h5>
+      </div>
+      <div class="col-md-3 col-lg-2 col-xl-2">
+        <h5 class="text-black mb-0 text-end">total</h5>
       </div>
 
+      <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+        <button class="btn btn-danger" id="empty-cart">
+          Vaciar <i class="fa fa-trash" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </template>
 
